@@ -42,7 +42,7 @@ This SFDX project contains the components required to build a Progressive Web Ap
    ```html
    <script
      src="/pwa/resource/1605881641041/scpwa_CommunityResources/pwa-loader.js"
-     async
+     defer
    ></script>
    ```
 
