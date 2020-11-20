@@ -1,0 +1,22 @@
+{
+  "name": "salesforce-community-pwa",
+  "description": "Example project to demonstrate how to turn a Salesforce Lightning Community into a Progressive Web App",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Georg Wittberger <georg.wittberger@gmail.com>",
+  "homepage": "https://github.com/georgwittberger/salesforce-community-pwa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/georgwittberger/salesforce-community-pwa.git"
+  },
+  "bugs": "https://github.com/georgwittberger/salesforce-community-pwa/issues",
+  "scripts": {
+    "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
+    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\""
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^0.12.0",
+    "prettier": "^2.0.5"
+  }
+}
