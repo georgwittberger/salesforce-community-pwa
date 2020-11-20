@@ -4,12 +4,12 @@
   "description": "Let the sunshine in your heart",
   "icons": [
     {
-      "src": "/pwa/resource/1605869751749/scpwa_CommunityPwa/sun-192.png",
+      "src": "/pwa/resource/1605869751749/scpwa_CommunityResources/sun-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/pwa/resource/1605869751749/scpwa_CommunityPwa/sun-512.png",
+      "src": "/pwa/resource/1605869751749/scpwa_CommunityResources/sun-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
