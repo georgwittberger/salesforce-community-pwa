@@ -47,7 +47,13 @@ This SFDX project contains the components required to build a Progressive Web Ap
    ></script>
    ```
 
-7. Open the Workspaces of the new community, go to _Administration_ and activate the community.
+7. Optionally drag a _HTML Editor_ component to a community page and insert the following HTML code to display an install button.
+
+   ```html
+   <button class="pwa-install-button" type="button">Install app</button>
+   ```
+
+8. Open the Workspaces of the new community, go to _Administration_ and activate the community.
 
 ## Concepts
 
