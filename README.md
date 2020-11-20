@@ -40,6 +40,7 @@ This SFDX project contains the components required to build a Progressive Web Ap
 6. Enter the following HTML code in the editor and save it.
 
    ```html
+   <meta name="theme-color" content="#fece49" />
    <script
      src="/pwa/resource/1605881641041/scpwa_CommunityResources/pwa-loader.js"
      defer
