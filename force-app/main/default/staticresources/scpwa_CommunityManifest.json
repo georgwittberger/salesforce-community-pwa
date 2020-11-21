@@ -4,19 +4,19 @@
   "description": "Let the sunshine in your heart",
   "icons": [
     {
-      "src": "/pwa/resource/1605869751749/scpwa_CommunityResources/sun-192.png",
+      "src": "{urlPrefix}/resource/{resourcesLastModified}/scpwa_CommunityResources/sun-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/pwa/resource/1605869751749/scpwa_CommunityResources/sun-512.png",
+      "src": "{urlPrefix}/resource/{resourcesLastModified}/scpwa_CommunityResources/sun-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     }
   ],
-  "scope": "/pwa/",
-  "start_url": "/pwa/s/",
+  "scope": "{urlPrefix}/",
+  "start_url": "{urlPrefix}/s/",
   "theme_color": "#fece49",
   "background_color": "#fece49",
   "display": "standalone"

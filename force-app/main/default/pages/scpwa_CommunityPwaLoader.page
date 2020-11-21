@@ -1,0 +1,1 @@
+<apex:page controller="scpwa_CommunityPwaLoaderCtrl" contentType="text/javascript">{!content}</apex:page>
