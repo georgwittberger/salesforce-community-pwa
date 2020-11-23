@@ -3,15 +3,14 @@
  */
 
 self.addEventListener('install', (event) => {
-  // Maybe populate caches with offline resources.
-  self.skipWaiting();
+  // This is the place to populate caches with offline resources.
 });
 
 self.addEventListener('activate', (event) => {
-  self.clients.claim();
+  // This is the place to cleanup old resources or take over clients.
 });
 
 self.addEventListener('fetch', (event) => {
-  // Maybe extend fetching to fall back to cached offline resources.
+  // Fetching can be extended to support fallback to cached offline resources.
   event.respondWith(fetch(event.request));
 });

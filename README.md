@@ -92,20 +92,20 @@ if ('serviceWorker' in navigator) {
 
 But we want the scope of the service worker to be `/pwa/` so that it can handle all server requests for the whole community. This is why the JavaScript code for the service worker must be provided by a URL which has only one child path segment under the community root context. For this reason the static resource content is loaded via the dedicated Visualforce page `scpwa_CommunityServiceWorker`. This page can be addressed directly by the URL path `/pwa/scpwa_CommunityServiceWorker` which meets the requirements.
 
-Note that the service worker itself does not implement any typical PWA features like caching for offline capability. This has to be extended as needed.
+Note that the service worker supplied in this project does not implement any typical PWA features like caching for offline capability. This has to be extended as needed. See the [MDN documentation on using service workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) for instructions.
 
 ### Web App Manifest
 
-Another important criterion for an installable progressive web app is the manifest. This is ja simple JSON file containing some meta information about the application (e.g. name, icons, colors, start URL).
+Another important criterion for an installable progressive web app is the manifest. This is a JSON file containing some meta information about the application (e.g. name, icons, colors, start URL). See the [MDN documentation on web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest) for more details.
 
-The manifest is stored as a template in the static resource `scpwa_CommunityManifest`. This JSON file can contain two specific placeholders.
+The manifest in this project is stored as a template in the static resource `scpwa_CommunityManifest`. This JSON file can contain two specific placeholders.
 
 - `{urlPrefix}` is resolved to the URL prefix of the community. This is required to compose valid icons URLs and a proper scope and start URL.
 - `{resourcesLastModified}` is resolved to the timestamp when the static resource `scpwa_CommunityResources` was last changed. This is required to generate up-to-date resource URLs for the icons.
 
-The manifest resource is loaded in the community page using a `<link>` tag in the head markup. Since we need to resolve the placeholders before the file can be served to the client the content is loaded via the dedicated Visualforce page `scpwa_CommunityManifest`. This page makes use of a custom Apex controller which loads the static resource body and then replaces the variables. The URL prefix is expected as the URL query parameter `urlPrefix` sent to the page. The last modified date of the static resource `scpwa_CommunityResources` is determined using a SOQL query.
+The manifest resource is loaded in the community page using a `<link>` tag in the head markup. Since we need to resolve the placeholders before the file can be served to the client the content is loaded via the dedicated Visualforce page `scpwa_CommunityManifest`. This page makes use of a custom Apex controller which loads the static resource body and then replaces the variables. The URL prefix is expected to be passed as URL query parameter `urlPrefix` to the page. The last modified date of the static resource `scpwa_CommunityResources` is determined using a SOQL query.
 
-With this approach we can also keep the head markup of the community fixed even when the manifest has changed. There is no need to update the manifest manually when the icons are updated because the Apex controller determines the new timestamp for the resource URLs in the manifest.
+With this approach we can also keep the head markup of the community fixed even when the manifest has changed. There is no need to update the manifest manually when the icons are updated because the Apex controller determines the new timestamp for the resource URLs.
 
 ## License
 
