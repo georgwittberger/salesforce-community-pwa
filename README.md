@@ -9,6 +9,7 @@
   - [Concepts](#concepts)
     - [Loader Script](#loader-script)
     - [Service Worker](#service-worker)
+    - [Offline Page](#offline-page)
     - [Web App Manifest](#web-app-manifest)
   - [License](#license)
 
@@ -20,7 +21,7 @@ This SFDX project contains the components required to build a Progressive Web Ap
 
 - Upgrade a Lightning Community to an installable Progressive Web App
 - Web app manifest to define custom icons for the installed app
-- Simple service worker which can be enhanced for offline support
+- Service worker with basic fallback to an offline page
 
 ## Installation
 
