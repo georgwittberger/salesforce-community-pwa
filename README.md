@@ -36,9 +36,12 @@ This SFDX project contains the components required to build a Progressive Web Ap
 
 3. Open the Experience Builder of the new community and in the _Settings_ panel activate _Public Access_ for the community.
 4. Open the Guest User Profile of the new community and add the following Visualforce pages to the section _Enabled Visualforce Page Access_.
+
    - `scpwa_CommunityManifest`
    - `scpwa_CommunityPwaLoader`
    - `scpwa_CommunityServiceWorker`
+   - `scpwa_CommunityOfflinePage`
+
 5. In the _Settings_ panel of the Experience Builder open the _Advanced_ section and click the button _Edit Head Markup_.
 6. Enter the following HTML code in the editor and save it.
 
@@ -92,7 +95,13 @@ if ('serviceWorker' in navigator) {
 
 But we want the scope of the service worker to be `/pwa/` so that it can handle all server requests for the whole community. This is why the JavaScript code for the service worker must be provided by a URL which has only one child path segment under the community root context. For this reason the static resource content is loaded via the dedicated Visualforce page `scpwa_CommunityServiceWorker`. This page can be addressed directly by the URL path `/pwa/scpwa_CommunityServiceWorker` which meets the requirements.
 
-Note that the service worker supplied in this project does not implement any typical PWA features like caching for offline capability. This has to be extended as needed. See the [MDN documentation on using service workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) for instructions.
+The service worker in this project provides a basic fallback to an offline page for all navigation requests. See the [MDN documentation on using service workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) for further information how to use caches for offline support.
+
+### Offline Page
+
+The service worker provided by the static resource `scpwa_CommunityServiceWorker` implements a basic fallback to an offline page for all navigation requests in case the client is offline.
+
+The offline page is provided by the Visualforce page `scpwa_CommunityOfflinePage` because it allows us to serve a self-contained HTML document with all required styles embedded. This is an advantage compared to Experience Builder pages which would require offline caching of the whole Aura and Lightning framework as well to make them display properly.
 
 ### Web App Manifest
 

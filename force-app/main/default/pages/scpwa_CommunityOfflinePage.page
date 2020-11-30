@@ -1,0 +1,39 @@
+<apex:page docType="html-5.0" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" showHeader="false" sidebar="false">
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline</title>
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-top: 0;
+      }
+
+      button {
+        font-size: 1rem;
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Oh no! You are offline.</h1>
+    <p>
+      You need an internet connection to use our community. Please connect to a mobile network or Wifi and try again.
+    </p>
+    <button type="button" onclick="window.location.reload()">Try again</button>
+  </body>
+
+  </html>
+</apex:page>

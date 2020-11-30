@@ -1,16 +1,39 @@
-/*
- * Service worker installed for the Lightning Community.
- */
+const OFFLINE_CACHE_NAME = 'offline-v1';
 
 self.addEventListener('install', (event) => {
-  // This is the place to populate caches with offline resources.
+  event.waitUntil(
+    caches
+      .open(OFFLINE_CACHE_NAME)
+      .then((offlineCache) => offlineCache.addAll([getOfflinePageUrl()]))
+  );
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  // This is the place to cleanup old resources or take over clients.
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  // Fetching can be extended to support fallback to cached offline resources.
-  event.respondWith(fetch(event.request));
+  event.respondWith(
+    fetch(event.request).catch((error) => {
+      if (event.request.mode !== 'navigate') throw error;
+      return caches.open(OFFLINE_CACHE_NAME).then((offlineCache) =>
+        offlineCache.match(getOfflinePageUrl()).then((offlineResponse) => {
+          if (offlineResponse) return offlineResponse;
+          throw error;
+        })
+      );
+    })
+  );
 });
+
+function getUrlPrefix() {
+  const scopePath = new URL(self.registration.scope).pathname;
+  return scopePath.endsWith('/')
+    ? scopePath.substr(0, scopePath.length - 1)
+    : scopePath;
+}
+
+function getOfflinePageUrl() {
+  return `${getUrlPrefix()}/scpwa_CommunityOfflinePage`;
+}
